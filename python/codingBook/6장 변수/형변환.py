@@ -1,0 +1,12 @@
+print(int(10.5))
+print(int('10'))
+print(int(0xA))
+print(int('0b1010', 2))
+print('---------------------------------')
+print(float(11))
+print(float('11'))
+print(float(0b1011))
+print('---------------------------------')
+print(str(12))
+print(str(12.0))
+print(str(0b1011))   #str() 함수는 모든 자료형을 문자열로 변환하여 반환한다.
