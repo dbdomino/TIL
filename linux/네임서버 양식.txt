@@ -1,0 +1,20 @@
+네임서버 운영
+
+named.conf
+
+named.도메인명.zone
+
+@	IN SOA	@ rname.invalid. (
+					0	; serial	//시리얼값
+					1D	; refresh	//보조 네임서버가 주 네임서버에 접속하는 시간
+					1H	; retry		//접속 실패시 다시 시도할 시도 간격
+					1W	; expire	//주네임서버에서 데이터가 없다면 1주 이후에 지워짐
+					3H )	; minimum	//TTL 설정과 같은 의미
+
+	IN	NS	ns.test.com.				//도메인을 소우한 주 DNS의 도메인
+        IN      MX      10 aspmx.l.google.com			//메일을 보낼 도메인 또는 주소
+	IN	TXT	"v=spf1 ip4:192.168.0.133 ~all"		
+	IN	A	192.168.65.133				//도메인이 찾아갈 IP주소
+www	IN	A	192.168.65.133				//www.도메인이 찾아갈 IP주소
+ns	IN	A	192.168.65.133				//주 네임서버 아이피
+test	IN	CNAME	google.com.
