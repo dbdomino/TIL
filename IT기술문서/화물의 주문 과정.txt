@@ -1,0 +1,32 @@
+화물의 주문 과정 숙지
+
+Step 1. Shipper
+
+• 물품생산 및 포장
+• Packing List 작성
+• 물품생산코드 인식라벨 생산 및 부착(Barcode/FRID ECP 표준)
+
+Step 2. Trucker
+
+• 생산자로부터 복합운송주선업자, 물류창고, 항공운송업자에게 전달
+• 물품인식코드에 대한 인식(Barcode/FRID ECP 표준)
+
+Step 3. Forwarder
+
+• 운송을 위한 제반 서류 작성, 선적예약, 물품을 항공운송업자에 접수
+• House Way Bill 발급 및 라벨 부착
+• Master Waybill 발급 및 라벨부착
+
+Step 4. Carrier
+
+• 공항 항공화물 터미널의 Truck에 트럭주차
+• 운송업자(Trucker)로부터 물품접수(수량, 중량확인, 보안검색)
+• Ware House에 보관 및 재고 관리
+• 항공수송용탑재용기(ULD)에 적재
+• 적하목록 작성
+• ULD를 화물터미널에서 주기장(Ramp)으로 이동
+• 항공기에 ULD 탑재
+• 적하목록 세관제출/수출신고
+• 항공기 출발
+
+관련 전문용어 숙지
