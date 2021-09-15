@@ -1,0 +1,22 @@
+Synchronous(동기식) 통신과 Asynchronous(비동기식) 통신
+
+동기식 통신 및 동기식 프로그래밍이란 Synchronous란 뜻대로 동시에 일어난 다는 뜻
+동시에 일어난 다는 것은 Request를 보내게 된다면 얼마나 시간이 걸리든 그 자리에서 Response를 받는다는 말로 즉, 두 서버 사이의 Transaction 을 맞추겠다는 뜻
+즉 Request를 보낸 Thread는 Response가 도착하기 전까지는 아무것도 하지 못하는 Block 상태가 됨을 의미합니다.
+
+요청과 응답값의 순서를 보장하게 됩니다. 또한 보낸 Request에 대한 처리 결과 값을 보장 받을 수 있습니다.
+요청 값에 대해 성공, 실패 및 처리 결과에 대해 변경되는 사항이 있는 경우엔 굉장히 중요한 요소 입니다.
+동기식 처리 방식은 철수가 영희한테 돈을 송금하였을때 영희가 돈을 받았는지 확인하는 상태라고 생각 하시면 됩니다.
+
+Asynchronous (비동기식) 통신이란?
+
+ASynchronous란 뜻대로 동시에 수행하지 않는다는 뜻입니다.
+동기식과는 반대로 Request를 보내더라도 Response를 언제 받아도 상관이 없다는 말로
+즉, Request를 보내고 Response를 상관하지 않는 상태가 되는 것입니다.
+
+ASynchronous(비동기식)에서는 Synchronous(동기식)과는 반대로
+**Response를 기다리지 않고 있으니 Request를 보낸 Thread는 다른 일을 할 수 있습니다. Request를 보내고 Response를 기다리지 않고 다른 일을 하는 이러한 상태를 Non Block 상태라로 합니다.**
+
+이러한 특징으로 Async(비동기식) 통신은 순서를 보장 하지 않습니다.
+이런식으로 Response를 기다리지 않고 Non Block 상태로 계속 자기일을 하는 Async(비동기식) 방식은 Sync(동기식) 방식에 비해 성능적으로 좋을 수 밖에 없습니다
+하지만 Sync(동기식)과 반대로 Response에 대한 처리 결과를 보장받고 처리해야 되는 서비스에는 적합하지 않습니다.
