@@ -1,0 +1,7 @@
+CIMPParser 란? 
+Cargo IMP Parser
+화물 관련 IMP message 
+
+메세지 종류에 따라 기능 달리 구현하는 방식에 사용가능하다.
+
+화물의 현재 상태 나타낼 수 있도록 미들웨어 구현에 사용된다.
