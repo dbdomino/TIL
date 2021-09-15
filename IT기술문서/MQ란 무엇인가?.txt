@@ -1,0 +1,17 @@
+MQ란 무엇인가?
+
+→ Producer, Consumer가 존재하며 Producer는 메시지를 큐에 전송하고 Consumer가 큐의 메시지를 처리하는 방식이다.
+
+→ MQ를 사용하면 비동기로 요청을 처리하고 queue에 저장하여 consumer에게 병목을 줄여줄 수 있는데 장단점은 존재한다.
+
+### 왜 쓸까?
+→ 일반적으로 Server-Client 구조에서는 사용자가 요청을 하면 Server에서는 Request에 대한 처리를 한 후 Response 한다.
+이런 간단한 구조는 MQ와 같은 미들웨어를 사용할 필요가 없다.
+
+### Application ↔ System 통신
+→ 서버간 데이터를 주고받을때 항상 시스템 장애를 염두해둬야한다.
+만약 서버가 죽거나 서버 점검 등으로 다운타임이 발생하는 동안에는 요청을 보낼 수 없다. 
+요청하는 서버에서 Failover 처리를 해놓고 연계 시스템이 다시 살아났을때 요청을 보내는 방법도 있지만 MQ를 이용하면 더욱 간편하게 처리할 수 있다.
+
+→  Message가 Queue에 쌓였다면 Consumer에서 메시지를 소비하기 전까지 Message queue에 보관되게된다. 
+만약 Consumer쪽 Server가 Fail 되었다면 MQ에 보관되는 것이다.
