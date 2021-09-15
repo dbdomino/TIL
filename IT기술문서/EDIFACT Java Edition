@@ -1,0 +1,15 @@
+응용 프로그램에 Internet EDI (EDIFACT) 구문 분석 및 메시지 생성 기능을 추가합니다.
+
+EDI parsers transform the linear structure of EDI documents into the hierarchical structure of EDI standards.
+
+EDI 기반 hierarchical 구조로된 EDI 문서 기반 선형구조로 변환시킨다.
+
+물류 주문, 처리상태에 관련된 상태값 지정시에 사용하기 편한 기능
+
+hierarchical code  (계층기반 코드)
+
+On the 856 Transaction Set, the BSN05 data element setups up the hirearchy structure for the rest of the transaction set. The most hirearhcy structure codes are:
+
+### **0001 Shipment, Order, Packaging, Item0002 Shipment, Order, Item, Packaging0004 Shipment, Order, Item**
+
+### Complete List of BSN05 Hirearchy Structure Codes
