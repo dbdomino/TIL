@@ -1,0 +1,10 @@
+cmd에서 oracledb 접속
+sqlplus 
+user-name : 입력
+password : 입력
+
+sqlplus user-name
+
+sqlplus user-name/password
+
+이걸로 접속가능
