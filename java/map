@@ -1,0 +1,3 @@
+Map map = new HashMap(); // 순서에 영향을 받지 않고 섞여서 저장됨
+		Map map2 = new HashMap(); // 순서에 영향을 받지 않고 섞여서 저장됨
+		Map map3 = new LinkedHashMap(); // 순서대로 저장됨
