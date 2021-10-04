@@ -13,3 +13,4 @@ On the 856 Transaction Set, the BSN05 data element setups up the hirearchy struc
 ### **0001 Shipment, Order, Packaging, Item0002 Shipment, Order, Item, Packaging0004 Shipment, Order, Item**
 
 ### Complete List of BSN05 Hirearchy Structure Codes
+ 
