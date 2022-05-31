@@ -15,6 +15,6 @@
 ###### H6
 
 2. 코드(Code) 강조
-<code>\<code\></code>
+<code>\<code\>문자\<\/</code>
 <code>## H2</code>
 <code>### H3</code>
