@@ -15,6 +15,6 @@ named.도메인명.zone
         IN      MX      10 aspmx.l.google.com			//메일을 보낼 도메인 또는 주소
 	IN	TXT	"v=spf1 ip4:192.168.0.133 ~all"		
 	IN	A	192.168.65.133				//도메인이 찾아갈 IP주소
-www	IN	A	192.168.65.133				//www.도메인이 찾아갈 IP주소
+www	IN	A	192.168.65.133				// www.도메인이 찾아갈 IP주소
 ns	IN	A	192.168.65.133				//주 네임서버 아이피
 test	IN	CNAME	google.com.
