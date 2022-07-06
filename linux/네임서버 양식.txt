@@ -4,7 +4,7 @@ named.conf
 
 named.도메인명.zone
 
-@	IN SOA	@ rname.invalid. (
+@	IN SOA	@ rname.invalid.  (
 					0	; serial	//시리얼값
 					1D	; refresh	//보조 네임서버가 주 네임서버에 접속하는 시간
 					1H	; retry		//접속 실패시 다시 시도할 시도 간격
