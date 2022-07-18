@@ -1,0 +1,5 @@
+CD는 Continuous Delivery/Deployment의 약자로 지속적 제공/배포라는 의미이다.
+CI를 통해서 빌드, 테스트가 완료되어 배포될 준비가 끝난 애플리케이션을 개발자가 수동으로, 혹은 자동으로 배포를 진행하는 것.
+(수동일때를 Continuous Delivery, 자동일때를 Continuous Deployment라고 한다. 최종단계의 자동화 여부로 나눈다고 하는듯?)
+
+출처: https://llshl.tistory.com/50 [하루에 딱 한 개만!!!:티스토리]
