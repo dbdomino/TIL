@@ -1,0 +1,42 @@
+Iterator
+Iterator란 자바의 컬렉션(Collection)에 저장되어 있는 요소들을 순회하는 인터페이스이다.
+
+Collection이란 자바에서 제공하는 자료구조들의 인터페이스로 List, ArrayList, Stack, Quque, LinkedList 등이 이를 상속받고있다. 
+즉, 이러한 컬렉션 인터페이스를 상속받는 클래스들에 대해 Iterator 인터페이스 사용이 가능하다.
+
+컬렉션 프레임워크에 대해 공통으로 사용이 가능하고 사용법이 간단하기 때문이다.
+
+ Iterator를 사용하려면 정의 방법과 메서드 3개만 알면 된다.
+ 
+ 정의방법은 Iterator<T> iterator = Collection.iterator(); 이고,
+ 메서드는 다음 요소가 있는지 판단하는 hasNext(), 
+ 다음 요소를 가져오는 next(),  가져온 요소를 삭제하는 remove()가 끝이다. 
+ 
+ 예제
+ public class IteratorTest {
+ 
+    public static void main(String[] args) {
+        
+        List<Integer> list = new ArrayList<Integer>();
+ 
+        for(int i = 0;i <= 100; i++) {
+            list.add(i);
+        }
+        
+        Iterator<Integer> iter = list.iterator();
+        
+        while(iter.hasNext()) {
+            int data = iter.next();
+            System.out.print(data);
+        }
+        
+    }
+    
+}
+5~9번 라인에서 Collection 인터페이스를 상속받는 ArrayList 객체를 생성하고 0부터 100 값을 add 한다.
+
+11번 라인에서 Iterator<T> iterator = Collection.iterator(); 형식에 맞게 Iterator<Integer> iter = list.iterator(); 를 사용하여 Iterator를 참조한다.
+
+13번 라인에서 hasNext() 메서드를 사용하여 다음 요소가 있는지 확인한다. (있으면 true, 없으면 false를 반환)
+
+14번 라인에서 next() 메서드를 사용해 다음 요소의 값을 조회한다.
