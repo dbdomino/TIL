@@ -1,0 +1,13 @@
+checkout 종류
+
+If your local changes are going to be overwritten by checkout,
+IntelliJ IDEA displays a list of files that prevent you from checking out the selected branch,
+and suggests choosing between Force Checkout and Smart Checkout.
+
+If you click Force Checkout, your local uncommitted changes will be overwritten,
+and you will lose them.
+
+If you click Smart Checkout, IntelliJ IDEA will shelve uncommitted changes,
+check out the selected branch, and then unshelve the changes. 
+If a conflict occurs during the unshelve operation, you will be prompted to merge the changes. 
+For details, see Resolve conflicts.
