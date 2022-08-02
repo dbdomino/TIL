@@ -1,0 +1,27 @@
+Jolokia is remote JMX with JSON over HTTP.
+
+
+It is fast, simple, polyglot and has unique features. It's JMX on Capsaicin.
+Jolokia is a JMX-HTTP bridge giving an alternative to JSR-160 connectors. 
+It is an agent based approach with support for many platforms. 
+In addition to basic JMX operations it enhances JMX remoting with unique features like bulk requests and fine grained security policies.
+
+
+JMX과 JConsole
+JMX는 자바 애플리케이션을 모니터링하고 관리하기 위한 완전한 아키텍처와
+일련의 디자인 패턴을 정의하는 테크놀로지입니다.
+이것은 관리되는 빈(managed beans)을 기반으로 하는데, 흔히 MBeans라고 하며,
+JVM에서 리소스를 표현하는 의존성 주입에 의해 인스턴스화되는 클래스입니다. 
+
+이러한 표현은 애플리케이션의 특정 측면을 관리하기 위해 사용될 수 있으며, 
+좀더 빈번하게, 이러한 리소스의 사용에 대한 통계를 수집하기 위해서도 사용될 수 있습니다.
+
+JMX의 핵심에는 MBean Server가 있는데, MBeans, 동일한 JVM의 애플리케이션, 
+그리고 외부 세계 사이에서 중개자 역할을 하는 엘리먼트입니다. 
+MBeans와의 상호작용은 이 서버를 통해 이루어집니다. 
+일반적으로, 자바 코드만이 JMX API에 직접 접근할 수 있지만, 이 API를 표준 프로토콜로 변환하는 어댑터들이 있습니다. 
+예를 들면, Jolokia는 이것을 HTTP로 변환해 줍니다.
+
+JMX로 작업하는데 있어 유용한 도구는 JConsole인데, 자바 런타임의 통상적인 배포에 포함되어 있습니다. 
+JConsole을 열면, 사용자의 장비에서 작동 중인 자바 프로세스 목록과 함께 환영 인사가 뜹니다. 
+작동 중인 자바 프로세스가 없더라도, 최소한 JConsole 그 자체는 보게 됩니다.
