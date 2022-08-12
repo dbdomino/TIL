@@ -1,0 +1,21 @@
+JMS(Java Message Service)
+JMS(Java™ Message Service)는 Java EE에 기반한 애플리케이션 구성요소에서 메시지를 작성, 전송, 수신하고 읽을 수 있도록 하는 API입니다. 
+Liberty에서 JMS 지원은 JMS 자원 어댑터의 배치를 지원하는 관련 기능의 그룹으로 제공됩니다.
+
+JMS는 서버 구성을 통해 큐, 주제, 연결, 기타 자원을 작성 및 관리하는 관리 모드로 실행할 수 있습니다. 
+여기에는 JMS 연결 팩토리, 큐, 주제, 활성화 스펙의 구성이 포함됩니다. 
+또는 애플리케이션의 일부로 모든 자원이 수동 구성되는 비관리 모드로 실행할 수도 있습니다. 
+Liberty 임베디드 JMS 메세징 제공자가 관리되므로 모든 자원은 server.xml 구성의 일부로 설정됩니다.
+
+JMS 스펙
+Liberty JVM 서버에서 지원되는 JMS 스펙 레벨은 JMS 2.0 지원입니다. 
+JMS 2.0 지원(jms-2.0)을 통해 자원 어댑터 구성은 Java Message Service API를 
+2.0 스펙 레벨로 사용하여 메시징 시스템에 액세스할 수 있습니다.
+
+JMS 클라이언트
+다양한 JMS 클라이언트가 다음 Liberty 기능을 통해 Liberty JVM 서버에서 지원됩니다.
+WebSphere® MQ JMS 2.0 클라이언트(wmqJmsClient-2.0) - WebSphere MQ JMS 클라이언트 기능을 사용하면 
+JMS 2.0 또는 1.1 클라이언트 애플리케이션이 원격 MQ 서버로부터 메시지를 전송하거나 수신할 수 있습니다.
+WebSphere Application Server JMS 2.0 클라이언트(wasJmsClient-2.0) - WebSphere Application Server 클라이언트 기능을 사용하면
+JMS 2.0 또는 1.1 클라이언트 애플리케이션이 wasJmsServer 기능을 통해 사용으로 설정되는 메시징 엔진으로부터 메시지를 전송하거나 수신할 수 있습니다.
+JCA 1.6 스펙을 준수하는 다른 JMS 자원 어댑터는 일반 JCA 자원 어댑터 링크를 사용하여 Liberty에서도 사용 가능합니다(JCA 구성 요소 개요 참조).
