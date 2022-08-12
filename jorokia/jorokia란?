@@ -6,8 +6,11 @@ Jolokia is a JMX-HTTP bridge giving an alternative to JSR-160 connectors.
 It is an agent based approach with support for many platforms. 
 In addition to basic JMX operations it enhances JMX remoting with unique features like bulk requests and fine grained security policies.
 
+Jolokia는 HTTP 프로토콜을 이용해 손쉽게 JMX 값을 JSON 형식으로 받아볼 수 있게 해주는 일종의 JMX-HTTP 커넥터입니다.
+특정 어플리케이션이 JMX을 제공한다면 JMX 모니터링을 위해 Jolokia를 사용할 수 있습니다.
 
-JMX과 JConsole
+
+※JMX과 JConsole
 JMX는 자바 애플리케이션을 모니터링하고 관리하기 위한 완전한 아키텍처와
 일련의 디자인 패턴을 정의하는 테크놀로지입니다.
 이것은 관리되는 빈(managed beans)을 기반으로 하는데, 흔히 MBeans라고 하며,
