@@ -1,0 +1,8 @@
+JMX(Java Management eXtension)
+
+JMX(Java Management eXtensions)는 응용 프로그램(소프트웨어)/객체/장치 (프린터 등) 및 서비스 지향 네트워크 등을 감시 관리를 위한 도구를 제공하는 자바 API이다.
+
+응용 프로그램(소프트웨어)/객체/장치, 서비스 지향 네트워크는 MBean(Managed Bean)이라는 객체로 표현된다. (출처: 위키피디아)
+
+참조
+https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=pcmola&logNo=222061574743
