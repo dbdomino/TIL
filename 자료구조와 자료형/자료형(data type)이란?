@@ -23,5 +23,14 @@
     float (4byte, 32bit 정밀도 7자리)    1.4 x 10(-45승) ~ 3.4 x 10(38승)
     double (8byte, 64bit 정밀도 15자리)  4.9 x 10(-324승) ~ 1.8 x 10(308승)
  
-1-2 String(문자형)
-  
+1-2 String(문자열 O 문자형 X)
+  문자열이란 문장을 뜻한다.
+  문자열 내장 메소드
+  - equals
+  - indexOf
+  - contains
+  - charAt
+  - replaceAll
+  - substring
+  - toUpperCase
+  - split
