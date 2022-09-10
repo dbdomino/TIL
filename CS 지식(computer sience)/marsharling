@@ -8,4 +8,4 @@
 정리하자면, 오브젝트와 통신하기 위해 오브젝트 이동할 때, 보낼 때 O(Plain Old Java Object)를 XML로 변환 하는 것을 마샬링 이라고 한다.
 XML뿐만 아니라 json처럼 다른것으로 보내기 위해 변환할 때 마샬링 이라는 단어를 쓴다.
 
-마셜링의 반대 개념으로 언마셜링(unmarshalling)이 있다 (디마셜링-demarshalling-이라고도 불리며, 역직렬화-deserialization-와 유사하다).
+마셜링의 반대 개념으로 언마셜링(unmarshalling)이 있다 (디마셜링-demarshalling-이라고도 불리며, 역직렬화-deserialization-와 유사하다.
