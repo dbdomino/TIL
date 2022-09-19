@@ -4,7 +4,7 @@ EDI parsers transform the linear structure of EDI documents into the hierarchica
 
 EDI 기반 hierarchical 구조로된 EDI 문서 기반 선형구조로 변환시킨다.
 
-물류 주문, 처리상태에 관련된 상태값 지정시에 사용하기 편한 기능
+물류 주문, 처리상태에 관련된 상태값 지정시에 사용하기 편한기능
 
 hierarchical code  (계층기반 코드) 
 
