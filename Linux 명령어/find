@@ -16,7 +16,7 @@ find . -name "*log*"
   -not -group 그룹명
 
 -path : 지정된 문자열 패턴에 해당하는 경로에서 검색.
-  find . -path "*content/docs/file.xml"
+  find . -path "*content/docs/file.xml"  
  
 -empty : 빈 디렉토리 혹은 크기가 0인 파일 검색
   -empty 
