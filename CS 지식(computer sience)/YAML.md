@@ -1,4 +1,4 @@
-# yaml이란
+# yaml이란(Yet Another Markup Languag)
 - YAML은 XML, C, 파이썬, 펄, RFC2822에서 정의된 e-mail 양식에서 개념을 얻어 만들어진 '사람이 쉽게 읽을 수 있는' 데이터 직렬화 양식이다.
 2001년에 클라크 에반스가 고안했고, Ingy dot Net 및 Oren Ben-Kiki와 함께 디자인했다.
 # xml의 대용품중 하나
