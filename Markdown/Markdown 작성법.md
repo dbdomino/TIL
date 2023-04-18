@@ -113,7 +113,7 @@
 [NAVER](https://naver.com "링크 설명(title)을 작성하세요.")<br>
 [상대적 참조](../users/login)<br>
 ![](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FbfCAYe%2FbtrVOxCOtni%2FBpOdKKvmsNhN3ttVtUek91%2Fimg.jpg)
-![고마워요](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FXaZ6F%2FbtrVUysF599%2FnhTFnkrkkJX85XJ6swvHfk%2Fimg.jpg)
+![롤롤](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FXaZ6F%2FbtrVUysF599%2FnhTFnkrkkJX85XJ6swvHfk%2Fimg.jpg)
 
 ## 8. 표 작성
 &#60;table&#62; 태그로도 사용가능하나 작성법을 알아두자..
