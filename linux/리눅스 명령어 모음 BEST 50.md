@@ -98,10 +98,10 @@
   * 파일/디렉토리의 사용자명:그룹명을 바꾸는데 사용됩니다.
   * chown 사용자명:그룹명 파일명
 * tar
-* 파일을 압축하는데 사용되는 명령어 입니다.
-* (압축 -c) (압축해제 -x) (작업과정출력 -v) (tar아카이브지정 -f) (gunzip압축적용 -z)
-* tar zcvf T.tar.gz *    tar cvf T.tar *    tar cvf T.tar [PATH]    tar cvf T.tar [FILE_1] [FILE_2]
-* tar zxvf T.tar.gz      tar xvf T.tar     tar xvf T.tar -C [PATH]     
+  * 파일을 압축, 해제 하는데 사용되는 명령어 입니다.
+  * (압축 -c) (압축해제 -x) (작업과정출력 -v) (tar아카이브지정 -f) (gunzip압축적용 -z)
+  * tar zcvf T.tar.gz *    tar cvf T.tar *    tar cvf T.tar [PATH]    tar cvf T.tar [FILE_1] [FILE_2]
+  * tar zxvf T.tar.gz      tar xvf T.tar     tar xvf T.tar -C [PATH]     
 
 # 4. 네트워크 관련 작업에 사용되는 명어
 
