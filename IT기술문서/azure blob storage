@@ -1,0 +1,6 @@
+Azure Blob Storage 파일 시스템 이 존재한다.
+파일서버 역할을 하는 파일 시스템 으로
+BlobFuse(Azure Blob Storage 위한 가상 파일 시스템 드라이버)를 리눅스에 설치해서 운영한다.
+
+관련 내용 참조
+https://learn.microsoft.com/ko-kr/azure/storage/blobs/storage-how-to-mount-container-linux?tabs=RHEL
