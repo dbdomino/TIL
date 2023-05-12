@@ -1,10 +1,12 @@
 restAPI 기술하기
 웹에서 데이터를 주고받기 위한 API중에서 REST 방식으로 주고받는 API를 말한다.
 
+rest get, post로 호출하는게 대부분이긴 한데, request문을 작성할 때 String의 + 로 데이터를 조합하는 경우 성능이슈가 생길 수 있다고 한다.
+그러므로 VO를 생성하여 데이터를 합쳐 출력하는 방법을 생각해보자.
+
 구체적인 방법은 다음을 참고하면 된다.
 https://dream-kwon.tistory.com/39
 https://blog.naver.com/adamdoha/221847105951
-
 
 아파치 카멜에서 restAPI 구현 다음링크 참조
 http://www.masterspringboot.com/camel/apache-camel-rest-example-for-beginners/
