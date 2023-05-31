@@ -1,0 +1,12 @@
+spring 에서 제공하는 많은 도구들이 있는데,
+그중에서 spring batch라는 툴이 있다.
+https://spring.io/projects/spring-batch
+
+spring batch 기반 빌드 및 배포를 통해 데이터를 수집하고 자동으로 저장시키며 보내는 기능을 편리하게 제공한다고 하는데, 
+나는 실제로 써본적이없어 무엇인지 잘 모르겠다.
+
+하면 할수록 공부할 것들이 많아 산넘어 산인 듯 하다..
+백앤드 개발자로서 모르면 안되는 부분이긴 하나, 공부하기싫다...
+내용에 대해 잘 정리된 게시물과 영상이 있어 기록남긴다.
+https://khj93.tistory.com/entry/Spring-Batch%EB%9E%80-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B3%A0-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
+https://www.youtube.com/watch?v=FkVIDwJSWeA&list=PLdzb2C7gS8oyfgrJefwkD-RivmuC_71A_
