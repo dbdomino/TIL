@@ -10,4 +10,4 @@ and you will lose them.
 If you click Smart Checkout, IntelliJ IDEA will shelve uncommitted changes,
 check out the selected branch, and then unshelve the changes.  d
 If a conflict occurs during the unshelve operation, you will be prompted to merge the changes. 
-For details, see Resolve conflicts.
+For details, see Resolve conflict
