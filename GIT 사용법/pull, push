@@ -2,3 +2,4 @@ pull 당기다.
 일반적으로 git -> local 경로로, git에서 가져오는 것을 의미한다.
 push 밀다
 일반적으로 git <- local 경로로, git으로 보내는 것을 의미한다.
+gb
