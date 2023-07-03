@@ -17,4 +17,4 @@ Defunct 프로세스는 프로세스 테이블에서 공간만 차지한다.
 
 [CreatePlan](./asset/zombie1.png)
 
-
+defunct 기억하기
