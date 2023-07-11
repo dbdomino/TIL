@@ -17,18 +17,7 @@
 |Registry|Contains a registry that allows you to look up beans.|
        
 
-
-
-
-
-
-
-
-
-
-
-
-
+상당히 유용하며, 자바, xml 에서 여러가지로 구현 가능하다.
 
 
 
