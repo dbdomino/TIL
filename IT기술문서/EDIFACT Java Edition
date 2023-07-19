@@ -1,7 +1,6 @@
 응용 프로그램에 Internet EDI (EDIFACT) 구문 분석 및 메시지 생성 기능을 추가합니다.
 
 EDI parsers transform the linear structure of EDI documents into the hierarchical structure of EDI standards.
-
 EDI 기반 hierarchical 구조로된 EDI 문서 기반 선형구조로 변환시킨다.
 
 물류 주문, 처리상태에 관련된 상태값 지정시에 사용하기 편한기능
