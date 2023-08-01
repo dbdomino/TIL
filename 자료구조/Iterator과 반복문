@@ -1,8 +1,7 @@
  Iterator를 통한 순회는 반복문을 통한 순회와는 메모리적으로 중요한 차이가 있다.
 
 LinkedList를 통해 예를 들어보겠다.
-
- public void linkedListTest() {
+public void linkedListTest() {
         LinkedList<Integer> list = new LinkedList<Integer>();
         
         for(int i = 0;i <= 100; i++) {
