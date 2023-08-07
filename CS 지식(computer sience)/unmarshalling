@@ -2,5 +2,6 @@ unmarshalling, 역직렬화, demarshalling이라고도 씀,
 
 통신을 받기 위해 데이터를 오브젝트화 시키는 작업을 언마샬링 이라고 한다.
 XML을 자바 오브젝트로 변환하는 것이 언마샬링이다.
+xml to java data
 
 marshalling 마샬링과 반대 개념
