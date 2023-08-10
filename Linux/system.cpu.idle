@@ -1,0 +1,5 @@
+The System Idle Process is simply a visual measure of how much free CPU capacity your system currently has, rather than an actual process taking up resources.
+That means if you're reading a 99% System Idle Process in your Task Manager, that means only 1% of your system is in use.
+
+System Idle Process cpu란 간단히 사용가능한 cpu용량 이라고 보면된다.
+사용중이지 않은 cpu량을 뜻하며, 보통 %로 표시된다.
