@@ -2,3 +2,19 @@
 반영시키고 싶을때 Cherry Pick을 사용한다.
 
 소스트리에서 지원하며, git 명령어로도 사용가능
+Cherry Pick은 commit id를 알아야 하며, 다음예시를 참고
+
+# git checkout master
+# git log --pretty=oneline
+b14b975 fixed: typo
+9f57292 ....
+git log를 이용해 가져오고 싶은 커밋의 id를 확인한 뒤 (b14b975)
+
+# git checkout next-release
+# git cherry-pick b14b975
+# git log --pretty=oneline
+23fa1e76 fixed: typo
+dd0f27c ...
+
+반영하고 싶은 브랜치 next-release로 체크아웃
+b14b975 id를 체리픽
