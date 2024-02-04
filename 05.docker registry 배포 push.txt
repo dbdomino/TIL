@@ -1,0 +1,30 @@
+
+docker login   < 도커허브에 먼저 로그인 해야 함.>
+
+사용자/ 를 붙여서 업로드 준비
+docker tag 리포지토리:태그 도커허브id/리포지토리:태그
+
+도커허브에 업로드
+docker push 도커허브id/리포지터리:태그
+
+업로드 완료되면 도커허브에서 public하게 다운로드 가능, private하게하려면 돈내야함.
+
+private registry 운영하기 <네트웍 제한된 공간에서는 이걸로쓰는곳이 많다.>
+https://hub.docker.com/_/registry
+
+docker run -d -p 5000:5000 --restart always --name registry registry:2
+실행할 경우 필요한거 알아서 pull해와서 사용한다.
+5000포트에 컨테이너 이미지를 업로드(push) 다운로드(pull) 가능하다.
+
+이미지를 구분하는 기준(repository명 버전명은 같으나 사용자명이 다르게 되어있거나 주소가추가됨)
+ubuntu:20.04   도커닷컴이 직접 관리하는 우분투 이미지
+seongmi/ubuntu:20.04   성미라는 계정에서 관리하는 우분투 이미지
+localhost:5000/ubuntu:20.04    localhost:5000에서 운영하는 우분투 이미지
+$ docker pull ubuntu
+$ docker tag ubuntu localhost:5000/ubuntu
+$ docker push localhost:5000/ubuntu
+
+docker tag httpd:latest localhost:5000/httpd   태그설정으로 push 준비
+docker push localhost:5000/httpd:latest         로컬5000으로 push 진행
+
+/var/lib/docker/volumes 들어가보면 볼륨하나더생긴거 확인가능
