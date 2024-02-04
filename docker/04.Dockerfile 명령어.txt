@@ -1,0 +1,54 @@
+04 Dockerfile 명령어
+도커파일 하나당 도커이미지 하나씩 생성가능
+•
+Dockerfile 문법
+• # : 주석
+• FROM  : 컨테이너의 BASE IMAGE (운영환경)
+• MAINTAINER : 이미지를 생성한 사람의 이름 및 정보
+• LABEL : 컨테이너이미지에 컨테이너의 정보를 저장
+• RUN : 컨테이너 빌드를 위해 base image에서 실행할 commands
+• COPY : 컨테이너 빌드시 호스트의 파일을 컨테이너로 복사
+• ADD : 컨테이너 빌드시 호스트의 파일(tar, url 포함)을 컨테이너로 복사
+• WORKDIR : 컨테이너 빌드시 명령이 실행될 작업 디렉터리 설정
+• ENV : 환경변수 지정
+• USER : 명령 및 컨테이너 실행시 적용할 유저 설정 (시스템 계정 별도 설정)
+
+• VOLUME : 파일 또는 디렉토리를 컨테이너의 디렉토리로 마운트 (mysql 데이터베이스 컨테이너는 해당 디렉토리에 데이터를 저장하여 영구적으로 보존)
+• EXPOSE : 컨테이너 동작 시 외부에서 사용할 포트 지정
+• CMD : 컨테이너 동작 시 자동으로 실행할 서비스나 스크립트 지정  
+• ENTRYPOINT : CMD와 함께 사용하면서 command 지정 시 사용
+-----------------
+docker build ./ 
+여기서 "docker build" 는 자동으로 알아서 Dockerfile부터 찾고 그 내용에 맞게 build를 진행해준다.
+
+/****** Dockerfile  예시
+FROM buildpack-deps:buster     가져올 베이스 컨테이너
+COPY hello.js /                   hello.js 라는 파일을 컨테이너의 / 경로로 복사한다.
+CMD ["node", "/hello.js"]     node 라는 명령어로 hello.js를 실행한다는 듯
+*/////
+
+docker build -t hellojs:v001 .         // -t는 태그설정, 이름:태그, 여기서 latest는 태그이름으로 다른 태그로로 지정해도된다.., 생략되면 latest 로 붙음.    . 현재 디토리의 파일을 기준으로 작업해라는 소리, hello.js나 dockerfile 이 . 현재경로 기준으로 있는걸 찾아서 해준다는소리
+docker image ls -> 도커 이미지 만들어진거 확인가능
+docker run -d -p 8080:8080 --name web05 hellojs:v001   ->  도커이미지를 실행하여 컨테이너로 동작 시작
+
+docker ps -> 실행중인 컨테이너 리스트 확인가능
+docker rm -f web05    -> web05라는 이름의 컨테이너를 종료하고 삭제시킴.
+
+curl localhost:8080 실행확인
+
+build 실행하고 docker images에 보면 성공적으로 도커 이미지가 만들어진다.  
+webserver 라는 이름의 이미지가 만들어진다.  (이미지이름 = 도커 이미지 이름 = Repository 이름 ) 이다. 여러이름으로 불리므로 혼돈주의
+docker build -t webserver:v1 .
+
+curl localhost:80 
+
+--------------------------------------------------------------------------
+docker hub에 도커이미지 배포하기
+## 1. 태그 올리기
+docker tag webserver:v1 도커허브ID/이미지이름:태그
+docker tag webserver:v1 dbdomino/webserver:v1
+docker tag hellojs:v002 dbdomino/hellojs:v002
+## docker images 해보면 태그로 등록된 새로운 이미지가 보인다.
+## 2. push로 도커허브에 올리기, docker login 부터 해둬야한다.
+docker push 도커허브ID/이미지이름:태그
+docker push dbdomino/webserver:v1
