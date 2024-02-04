@@ -1,0 +1,24 @@
+guru / work
+root / work
+
+sudo passwd root
+sudo passwd guru
+
+/etc/hosts 설정
+------ubuntu
+127.0.0.1    localhost
+10.100.0.105    docker-ubuntu.example.com   docker-ubuntu
+10.100.0.106    docker-centos.example.com   docker-centos
+
+
+systemctl isolate grapical.target
+systemctl set-default graphical.target
+-- gui 환경으로 부팅하기
+systemctl set-default multi-user.target
+-- gui 말고 커맨드로 부팅하기
+
+-- root 계정으로 수행, guru로 수행하려면 sudo 붙여서 수행
+-- 기본 프로그램 설치
+apt-get update
+apt-get install-y openssh-server curl vim tree
+
