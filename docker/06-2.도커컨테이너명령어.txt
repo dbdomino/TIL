@@ -1,0 +1,39 @@
+----------docker inspect   컨테이너의 상세정보 확인 가능--------------------------------------------------------------------
+- 컨테이너 상세확인 (프로세스 id, port 확인, docker에서 할당중인 ip이름 확인)
+- 컨테이너 이미지 상세확인
+docker inspect 컨테이너이름                  docker inspect 이미지이름
+docker inspect --format '{{.NetworkSettings.IpAddress}}' 컨테이너이름
+docker inspect --format '{{.NetworkSettings.IPAddress}}' webserver
+cip webserver      아래에 alias등록하면 이렇게도 수행가능
+ip 뜨면 실행되는지 확인도 가능하다 curl 172.17.0.3
+
+길기에 alias 등록해서 자주 사용하기도 한다.
+alias [단축어명]='명령어'
+alias     등록된 단축명령어 확인가능
+alias cip='docker inspect --format '\''{{.NetworkSettings.IPAddress}}'\'''     명령어 입력할때 명령어에 ' 가 들어갈 경우 '\'' 로 바꿔 둘러싸서 넣어줘야한다.
+
+------------  docker logs  로그사용기록
+docker logs webserver       실행중인 컨테이너에서 로그 보기 (접속 기록, 성공 실패 기록들 확인 가능함.)
+docker logs -f webserver       실행중인 컨테이너에서 로그 보기, 실시간 확인가능 , 종료시 ctrl+c
+
+------------  docker top  컨테이너 내의 ps -ef 조회
+docker top webserver
+
+----------------------------------------컨테이너에 연결하여 접속하기
+docker attach [옵션] 컨테이너이름   포그라운드로 실행중인 컨테이너에 연결(접근)
+docker exec -it webserver /bin/bash         실행중인 컨테이너안에서 bash로 명령어 추가 실행하는것, 도커 호스트가 아니라 컨테이너에서 실행됨
+docker exec webserver /bin/bash             
+
+컨테이너로 들어가서, 내부의 파일을 수동으로 수정 가능
+nginx 웹서버라면 /usr/share/nginx/html  에 index.html 페이지가 있는데, 이를 수정할 수도 있음.
+
+----------------컨테이너 삭제(실행중인 컨테이너는 삭제불가. 실행중인거 삭제하려면 -f 옵션 사용해야함)
+docker rm 컨테이너ID      docker rm 컨테이너NAMES
+컨테이너 삭제시 컨테이너 안에있는 데이터도 모두 삭제된다.
+
+실행 중인 컨테이너를 제외한 모든 컨테이너 삭제
+docker container prune
+모든 이미지 삭제
+docker image prune
+도커 이미지, 컨테이너, 볼륨, 네트워크 등 모든 도커 리소스 일괄 삭제
+docker system prune
