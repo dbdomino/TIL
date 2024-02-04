@@ -1,0 +1,58 @@
+----------------------------------------------------------------------------------
+이미지 검색 : docker search [옵션] 이미지이름:태그명
+이미지 다운로드 : docker pull [옵션] 이미지이름:태그명
+다운 받은 이미지 목록 : docker images     docker image ls     docker images 이미지이름:태그명
+다운받은 이미지 상세보기 : docker inspect [옵션] 이미지이름:태그명
+이미지 만들기 : docker build -t 이미지이름:태그이름 .         .경로에 dockerfile 과 원하는 소스파일 있어야함.
+이미지 삭제 : docker rmi [옵션] 이미지이름
+
+docker search nginx 
+docker pull nginx:1.14
+docker images
+docker inspect nginx:1.14          태그는 생략되면 latest
+
+----------------컨테이너 실행 라이프 사이클 명령어---------------------------------  
+
+- 도커호스트에서 다운받은 이미지를 컨테이너 어플리케이션으로 실행시켜야함
+- 컨테이너 어플리케이션 생성(만들기) / 컨테이너 생성
+docker create [옵션] 이미지이름:태그명
+docker create --name webserver nginx:1.14    
+- 컨테이너 어플리케이션 실행 / 컨테이너 실행
+docker start [옵션] 컨테이너이름
+docker start webserver
+
+- 컨테이너 어플리케이션 만들고 바로 실행 / 컨테이너 생성 및 실행
+docker run [옵션] 이미지이름:태그명
+docker run --name webserver nginx:1.14
+
+- 컨테이너 실행중인 어플리케이션 확인
+docker ps
+docker ps -a     중지중인 모든 컨테이너 확인
+- 컨테이너 실행중인 어플리케이션 상세확인 (프로세스 id, port 확인 등
+docker inspect 컨테이너이름                  docker inspect 이미지이름
+
+- 동작중인 컨테이너 어플리케이션 중지 / 동작중인 컨테이너 중지
+docker stop 컨테이너이름       docker stop webserver
+- 컨테이너 삭제(실행중인 컨테이너는 삭제불가. 실행중인거 삭제하려면 -f 옵션 사용해야함)
+docker rm 컨테이너ID      docker rm 컨테이너NAMES
+현재 실행중인 모든 컨테이너를 중지시키고 삭제하는 것
+alias crm='docker rm -f $(docker ps -aq)'
+
+
+------------------실행중인 컨테이너 관리 명령어---------------------------------
+docker ps
+docker top webserver       실행중인 컨테이너에서 어떤 프로세스가 동작중인지 확인
+docker log webserver       실행중인 컨테이너에서 로그 보기
+docker log -f webserver       실행중인 컨테이너에서 로그 보기
+docker attach [옵션] 컨테이너이름   포그라운드로 실행중인 컨테이너에 연결(접근)
+docker exec -it webserver /bin/bash 
+docker exec webserver /bin/bash             실행중인 컨테이너안에서 bash로 명령어 추가 실행하는것, 도커 호스트가 아니라 컨테이너에서 실행됨
+docker stop webserver      실행중인 컨테이너 중지
+docker rm webserver         컨테이너 삭제. (중지가아닌 종료)
+
+-------- 유용한 옵션 --no-trunc
+--no치고 탭치면 자동완성도 지원됨
+도커 이미지의 ImageID 전부 출력시켜줌, ps 에서도 컨테이너 ID 모두 출력시켜줌
+docker images --no-trunc    
+docker ps --no-trunc
+docker history --no-trunc openjdk:17     docker history openjdk:17          <얘는 가독성너무 안좋음ㅁ>
