@@ -1,0 +1,87 @@
+컨테이너이미지는 readonly
+컨테이너로 올리면, readwrite 이미지레이어가 붙어서 읽고쓰기가 가능한 컨테이너가 된다.(start run)
+
+컨테이너에 db올려서 저장한다해도
+컨테이너 stop 및 rm되면 db에 저장된 데이터는 다날아간다..
+컨테이너가 만들어주는 데이터를 영구적으로 보존하는 방법이 필요하다. 그리고 있다.
+
+방법. 
+docker host에 특정 저장소 공간을 마련한다
+/FTP
+/dbdata
+그리고 컨테이너가 만드는 데이터를 /FTP /var/lib/mysql 같은 공간에 저장되도록 하면 된다.
+docker run -d --name db -v /dbdata:/var/lib/mysql -e 
+옵션 -v 도커호스트저장공간:컨테이너에서공간     (이걸로 매핑시켜 컨테이너에서 저장된데이터가 /dbdata에도 저장된다. 이게바로 볼륨 마운트)
+
+주의.
+컨테이너가 volume mount 해서 도커host의 디렉토리를 수정하는건 위험할 수 있다.
+필요한 경우가 아니면 안하는게 좋다.
+docker run -d --name db -v /dbdata:/var/lib/mysql:ro -e   ( -v dockerHost공간:container공간:ro   ro붙여서 readonly로 dockerHost공간의 데이터를 읽어오기만 가능하도록 설정가능, 별도로 안쓰면 rw 다가능)
+docker run -d --name db -v /var/lib/mysql -e   ( -v container공간 container 공간만 쓰면 /var/lib/docker/volumes 여기 에 uuid 아래에 디렉토리가 만들어져 자동 마운트가 된다)
+
+
+
+-----------------------mysql DB data 영구 보존하기 --------------------------
+docker run -d -v /dbdata:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=pass --name db mysql:8     (MYSQL_ROOT_PASSWORD    mysql 사용시 반드시 지정해줘야 하는옵션 root 비밀번호 넣기) (docker host의 /dbdata 경로가 없으면 자동으로 생성해준다. 755 권한 systemd-coredump root )
+docker run -d -v /var/lib/mysql -e MYSQL_ROOT_PASSWORD=pass --name db mysql:8
+
+생성후 컨테이너로 들어가서 mysql에 접속하여 db생성하기
+docker exec -it db /bin/bash
+들어가서 root 계정으로 mysql 접속(password는 pass로 해놧음)
+mysql -u root -ppass
+create database book;
+show databases;
+
+데이터베이스 생성및 확인완료, /dbdata 경로 들어가보면 book이라는 데이터베이스(폴더) 생긴걸 확인할 수 있다.
+컨테이너를 또 새로 실행할때 /dbdata 경로를 볼륨마운트 해준다면 영구적으로 사용 가능하다.
+
+docker inspect db   실행해서 "Mounts" 영역을 확인해보면 마운트 정보를 알 수 있다.
+docker rm -f db
+이후에 컨테이너를 삭제한다해도 /dbdata의 볼륨마운트만 해제되며 데이터는 실제로 남아있다.
+
+
+---------------------
+2번째 방법
+docker run -d -v /var/lib/mysql -e MYSQL_ROOT_PASSWORD=pass --name db mysql:8 
+이걸로 만들었다면 volume이 동적으로 /var/lib/docker/volumes 안에 uuid 기준으로 생성됬을건데 리스트를 명령으로 확인할 수 있다.
+docker volume ls
+
+볼륨삭제하려면 아래처럼 명령수행 (탭으로 자동완성 가능)
+docker volume rm uuid
+docker volume rm 84393bfbcae01f8e46f8abb19f5b934a55ec7a8a284a12bd432f1d2afb138e68
+
+---------------------- 컨테이너 끼리 데이터 공유하기 -----------------
+-v 로 같은 디렉토리 공유시키면 된다.
+                                       포트포워딩
+docker run -d --name web -p 80:80 -v /webdata:/usr/share/nginx/html:ro nginx:1.14
+
+미리 /webdata 안에 index.html 파일 만들어두고 실행해보면 확인된다.
+
+
+-----------------------batch 스케줄링 컨테이너 만들기
+df -h    이거 용량 조회하는 명령어
+
+df.sh 파일 만들기
+#!/bin/bash
+mkdir -p /webdata
+while true
+do
+  df -h / > webdata/index.html
+  sleep 10
+done
+
+DockerFile 만들기
+FROM ubuntu:18.04
+ADD df.sh /bin/df.sh
+RUN chmod +x /bin/df.sh
+ENTRYPOINT ["/bin/df.sh"]
+
+이미지 만들기   docker build -t batchdf:v1 .
+이미지 컨테이너로 만들기
+docker create -v /webdata:/webdata --name bat01 batchdf:v1
+컨테이너 실행
+docker start bat01
+
+이미지 컨테이너로 만들고 바로 실행
+docker run -d -v /webdata:/webdata --name bat01 batchdf:v1
+docker run -d --name web -p 80:80 -v /webdata:/usr/share/nginx/html:ro nginx:1.14
