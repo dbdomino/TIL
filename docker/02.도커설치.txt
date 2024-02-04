@@ -1,0 +1,11 @@
+https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository
+
+도커 위의 메뉴얼보고 설치 가능
+
+설치 후 도커가 사용자 계정에서 사용할 수 있도록 권한을 줘야함.
+
+root계정이 줄 수 있음.
+---- guru 유저에게 docker 그룹에 추가시키는것
+usermod -a -G docker guru
+다른방법
+sudo usermod -aG docker [username]
