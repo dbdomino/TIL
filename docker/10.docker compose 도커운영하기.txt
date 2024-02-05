@@ -1,0 +1,176 @@
+docker compose
+빌드하고 운영하기
+도커컴포즈는 yaml 문법을 사용해야 한다.
+yaml문법을 통해 빌드와 운영을 사용자들 대신해 실행한다.
+다른말로 컨테이너를 자동으로 실행해준다.(강제 재시작시 필요....)
+- 여러 컨테이너를 일괄적으로 정의하고 실행할 수 있는 툴
+- 하나의 서비스를 운여하기 위해 여러개의 어플리케이션이 컨테이너로 동작할텐데, 이를 yaml로 통합해서 관리할 수 있다.
+
+docker compose yaml 명령어
+================================
+version       compose 버전. 버전에 따라 지원 문법이 다름. (특정 키워드는 특정버전 이상에서 지원되므로 확인하며 쓰면되는데, 최근엔 버전은 거의안붙이는듯)
+				version:"2"
+service		컴포즈를 이용해서 실행할 컨테이너 이름, 옵션을 정의
+				service:
+				   webserver:
+				      image: nginx
+				   db:
+				      image: redis
+build			컨테이너 빌드
+				webapp:
+				   build: .
+image		compose를 통해 실행할 이미지를 지정
+				webapp:
+				   image: centos:7
+command	컨테이너에서 실행될 명령어 지정
+				app:
+				   image: node:12-alpine
+				   command: sh-c "yarn install && yarn run dev"           (특정 커맨드 수행)
+port			컨테이너가 공개하는 포트를 나열
+				webapp:
+				   image: httpd:latest
+				   port:
+				      - 80                         (도커호스트의 랜덤포트가 컨테이너의 80포트와 포워딩됨)
+					  - 8443:443
+link			다른 컨테이너와 연계할 때 연계할 컨테이너 지정.
+				webserver:
+				   image: wordpress:latest
+				   link:
+				      db:mysql
+expose		포트를 링크로 연계된 컨테이너에게만 공개시킬 포트 설정
+				webapp:
+				   build: .
+volumes		컨테이너에 볼륨을 마운트
+				webapp:
+				   image: mariadb:10.6.4-focal
+				   volumes:
+				      - db_data:/var/lib/mysql
+				volumes:
+				   db_data:
+				   git_data:
+environment   컨테이너에 적용할 환경변수를 정의
+				database:
+				  image: mysql:5.7
+				  environment:
+				      - MYSQL_ROOT_PASSWORD=somewordpress
+					  - MYSQL_DATABASE=wordpress
+					  - MYSQL_USER=wordpress
+					  - MYSQL_PASSWORD=wordpress
+restart		컨테이너가 종료될 때 적용할 restart 정책
+				  no: 재시작 되지 않음.
+				  always: 컨테이너를 수동으로 끄기 전까지 항상 재시작
+				  on-failure: 오류가 있을 시에 재시작시
+				database:
+				  image: mysql:5.7
+				  restart: always
+depends_on  컨테이너간 종속성을 정의, 정의한 컨테이너가 먼저 동작되어야 한다.
+				service:
+				  services:
+				    web:
+					  image: wordpress:latest
+					  depends_on:                  (db 라는 컨테이너가 먼저 동작되어야 web 이라는 컨테이너를 실행합니다. 라는 뜻)
+					    - db
+					db:
+					  image: mysql
+
+					  
+예제로 https://github.com/docker/awesome-compose/blob/master/wordpress-mysql/compose.yaml
+여기소스의 compose.yaml을 기반으로 run을 작성해본다면 이런느낌이다.
+docker run --name db mariadb:10.6.4-focal -v db_data:/var/lib/mysql --restart=always -e MYSQL_ROOT_PASSWORD=somewordpress -e MYSQL_DATABASE=wordpress -e MYSQL_USER=wordpress -e MYSQL_PASSWORD=wordpress --expose 3306
+docker run --name wordpress   .....
+
+---------------------------------docker compose로 웹서버 동작시키는 단계
+1단계 서비스 디렉토리 생성  (도커 컴포즈가 사용할 서비스 디렉토리 생성, DockerFile 처럼 별도 디렉토리로 관리하는게 좋음)
+	mkdir webserver
+	cd webserver
+2단계 docker-compose.yaml 생성
+$ cat docker-compose.yaml
+version: '3'
+services:
+  web:
+    image: httpd:latest
+	ports:
+	  - "80:80"
+	links:
+	  - mysql:db
+	command: apachectl -DFOREGROUND
+  mysql:
+    image: mysql:latest
+	command: mysqld
+	environment:
+	  MYSQL_ROOT_PASSWORD: pass
+
+3단계 docker-compose 명령어 실행 (docker 랑 좀 다르네)
+$ docker compose up -d                         (yaml을 기준으로 실행시키라는 의미, -d는 데몬모드 백그라운드에서 실행)
+$ docker compose ps                              (현재 디렉토리의 compose.yaml 파일로 만들어진 컨테이너만 확인 가능?)
+$ docker compose scale mysql=2              (scale 명령어로 mysql 을 2개로 운영하는 것도 가능함.)
+$ docker compose ps                              (
+$ docker compose stop                           (현재 디렉토리의 compose.yaml 파일로 만들어진 컨테이너 중지)
+$ docker compose down                         (현재 디렉토리의 compose.yaml 파일로 만들어진 컨테이너 종료   rm 과 비슷ㅎ)
+
+----------------------------------- docker-compose 명령어---------
+docker compose up        컨테이너 생성/시작
+docker compose ps         컨테이너 목록 표시
+docker compose logs       컨테이너 로그 출력
+docker compose run        컨테이너 실행
+docker compose start       컨테이너 시작
+docker compose stop       컨테이너 정지
+docker compose restart    컨테이너 재시작
+docker compose pause     컨테이너 일시 정지
+docker compose unpause 컨테이너 다시 시작(일시정지해제)
+docker compose port        공개포트 번호 표시
+docker compose config     구성 확인 (yaml 파일 문법체크)
+docker compose kill         실행 중인 컨테이너 강제 정지
+docker compose rm          컨테이너 삭제
+docker compose down      리소스 삭제
+----------------------------------------------------
+일반적인 실행에서 자주사용되는 것
+docker compose config
+docker compose up
+docker compose up -d
+docker compose -f /other-directory/docker-compose.yaml
+
+docker compose ps   				
+docker compose scale 서비스이름=개수
+docker compose run 서비스이름 실행명령어                  (특정 컨테이너=서비스 에 어떤명령 실행할지 전달하는 것도 가능)
+docker compose logs 서비스이름
+
+docker compose stop
+docker compose start
+docker compose down
+
+----------------------------------------------빌드에서 운영 같이하기
+---위에는 docker-compose.yaml 파일만 있었는데, 사실 docker-compose명령을 실행하면 DockerFile을 찾아서 알아서 빌드를 수행한 후
+---yaml 파일을 찾아 도커 컴포즈 실행도 해준다고 한다...
+1. 단계 서비스 디렉토리 생성
+mkdir composetest
+cd composetest
+2. 2단계 빌드를 위한 dockerfile 생성
+$ cat Dockerfile
+FROM python:3.7-alpine
+WORKDIR /code
+ENV FLASH_APP=app.py
+ENV FLASH_RUN_HOST=0.0.0.0
+RUN apk add --no-cache gcc musl-dev linux-headers
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+EXPOSE 5000
+COPY . .
+CMD ["flask", "run"]
+
+3. docker-compose.yaml 생성
+$ cat docker-compose.yaml
+version: "3"
+services:
+  web:
+    build: .
+	ports:
+    - "5000:5000"
+  redis:
+    image: "redis:alpine"
+
+4. docker-compose로 배포 후 scale 조절도 가능함
+docker-compose up -d
+
+
+https://docs.docker.com/compose/gettingstarted/
