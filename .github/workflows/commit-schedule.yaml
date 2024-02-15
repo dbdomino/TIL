@@ -1,7 +1,7 @@
 name: Daily Commit
 on:
   schedule:
-    - cron: '18 7 * * *' # 분 시 일 월 요일. UTC +9 16시 18분에 실행
+    - cron: '12 10 * * *' # 분 시 일 월 요일. UTC +9 19시 12분에 실행
 
 jobs:
   build:
