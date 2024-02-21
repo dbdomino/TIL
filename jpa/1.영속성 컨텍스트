@@ -224,6 +224,8 @@ List<MyEntity> entities = query.getResultList();
 
 ---
 
+## 참고 https://github.com/devSquad-study/2023-CS-Study 
+
 ### 📚 References
 
 - [자바 ORM 표준 JPA 프로그래밍](https://www.yes24.com/Product/Goods/19040233)
